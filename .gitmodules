@@ -1,0 +1,4 @@
+[submodule "licenses-json"]
+	path = licenses-json
+	url = https://github.com/fus1ondev/licenses-json.git
+	branch = json

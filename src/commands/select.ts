@@ -1,15 +1,14 @@
 import fetch from "node-fetch";
 import signale from "signale";
 import prompts from "prompts";
-import { License } from "../types/License";
+import licenses from "../../licenses-json/licenses.json";
 import { generate } from "./generate";
 
 export const select = async (isForced: boolean, isMarkdown: boolean) => {
   try {
-    const { licenses } = await fetch("https://spdx.org/licenses/licenses.json").then((res) => res.json());
-    const licenseChoices = licenses.map((license: License) => ({
-      title: license.name,
-      value: license.licenseId,
+    const licenseChoices = licenses.map((license) => ({
+      title: license.title,
+      value: license["spdx-id"],
       descripton: undefined,
     })).sort((a: any, b: any) => a.title.localeCompare(b.title));
 
